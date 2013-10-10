@@ -1,7 +1,11 @@
 jquery-idletimer
 ================
 
-Simple javascript client idle control.
+Simple javascript client idle control. 
+
+For support of multiple tabs usage, the idle time is stored into browser cookie. Then script **don't work** on direct file:// access.
+
+
 
 Usage
 ---------------
