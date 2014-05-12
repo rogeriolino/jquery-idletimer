@@ -12,15 +12,18 @@ Usage
 
 Simple mode
 
+```javascript
     $.idleTimer({
         time: 15,
         end: function() {
             alert('logout!');
         }
     });
+```
 
 Custom callbacks
 
+```javascript
     $.idleTimer({
         time: 15,
         format: 'm:s',
@@ -42,6 +45,7 @@ Custom callbacks
             }
         },
     });
+```
 
 Paramters
 ---------------
