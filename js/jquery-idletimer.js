@@ -1,6 +1,6 @@
 /**
  * Idle Timer
- * @author rogeriolino <rogeriolino.com>
+ * @author Rogério Lino <rogeriolino.com>
  */
 ;(function($) {
     "use strict";
