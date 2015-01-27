@@ -26,7 +26,7 @@ Custom callbacks
 ```javascript
 $.idleTimer({
     time: 15,
-    format: 'm:s',
+    format: '%m:%s',
     start: function(it) {
         $('#timer').html(it.format()).css('color', 'black');
     },
