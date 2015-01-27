@@ -13,41 +13,41 @@ Usage
 Simple mode
 
 ```javascript
-    $.idleTimer({
-        time: 15,
-        end: function() {
-            alert('logout!');
-        }
-    });
+$.idleTimer({
+    time: 15,
+    end: function() {
+        alert('logout!');
+    }
+});
 ```
 
 Custom callbacks
 
 ```javascript
-    $.idleTimer({
-        time: 15,
-        format: 'm:s',
-        start: function(it) {
-            $('#timer').html(it.format()).css('color', 'black');
-        },
-        end: function() {
-            alert('logout!');
-        },
-        change: function(it) {
-            var output = $('#timer');
-            output.html(it.format());
-            if (it.time <= 10) {
-                if (it.time <= 5) {
-                    output.css('color', 'red');
-                } else {
-                    output.css('color', 'orange');
-                }
+$.idleTimer({
+    time: 15,
+    format: 'm:s',
+    start: function(it) {
+        $('#timer').html(it.format()).css('color', 'black');
+    },
+    end: function() {
+        alert('logout!');
+    },
+    change: function(it) {
+        var output = $('#timer');
+        output.html(it.format());
+        if (it.time <= 10) {
+            if (it.time <= 5) {
+                output.css('color', 'red');
+            } else {
+                output.css('color', 'orange');
             }
-        },
-    });
+        }
+    },
+});
 ```
 
-Paramters
+Parameters
 ---------------
 
 - **time**: total seconds of mouse and keyboard idle
