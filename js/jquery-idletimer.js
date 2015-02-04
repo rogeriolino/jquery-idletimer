@@ -19,9 +19,8 @@
         setup = true;
         it.started = true;
         it.options = $.extend(defaults, opts);
-        it.time = it.options.time;
-        cookie.write(it.options.cookieName, it.time);
-        it.options = $.extend(defaults, opts);
+        
+        reset(it);
         
         it.format = function() {
             return formatter.time(it.time, it.options.format);
@@ -33,8 +32,7 @@
         
         $(document).on('mousemove keydown', function() {
             if (it.started) {
-                cookie.write(it.options.cookieName, it.options.time);
-                it.time = it.options.time;
+                reset(it);
                 if (typeof(it.options.start) === 'function') {
                     it.options.start(it);
                 }
@@ -47,13 +45,24 @@
         
         return it;
     };
+
+    var reset = function(it) {
+        cookie.write(it.options.cookieName, (new Date()).getTime());
+        it.time = it.options.time;
+    }
+
+    var diff = function(it)  {
+        var startTime = cookie.read(it.options.cookieName);
+        var currTime = (new Date()).getTime();
+        return parseInt((currTime - startTime) / 1000);
+    }
     
     var interval = function(it) {
-        it.time = cookie.read(it.options.cookieName) - 1;
+        it.time = it.options.time - diff(it);
+
         if (it.time <= 0) {
             it.time = 0;
         }
-        cookie.write(it.options.cookieName, it.time);
         
         if (typeof(it.options.change) === 'function') {
             it.options.change(it);
